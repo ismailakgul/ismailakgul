@@ -3047,7 +3047,7 @@
           },
           {
             "name": "Satışlar ID",
-            "expression": "DISTINCTCOUNT('Satışlar'[Ürün ID] )*2",
+            "expression": "DISTINCTCOUNT('Satışlar'[Ürün ID] )*4",
             "formatString": "#,0",
             "lineageTag": "1a38b235-5000-42b0-9dfc-86fc0bea957b"
           },
