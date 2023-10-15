@@ -1,0 +1,3126 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.122.746.0 (23.10)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Müşteriler\",\"Tarih\",\"Ürünler\",\"Ürün Kategorileri\",\"Ürün Alt Kategorileri\",\"Satışlar\",\"Mağazalar\",\"Metrikler\",\"Ölçüler\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "Metrikler",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WMlSKjQUA\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+          "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", Int64.Type}}),",
+          "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+          "in",
+          "    #\"Removed Columns\""
+        ],
+        "kind": "m",
+        "lineageTag": "494b76aa-d44c-4682-8ef3-ce9e02451130"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "510526ce-d8d3-4702-9935-d8e890f49dd5",
+        "fromColumn": "Ürün Alt Kategori ID",
+        "fromTable": "Ürünler",
+        "toColumn": "Ürün Alt Kategori ID",
+        "toTable": "Ürün Alt Kategorileri"
+      },
+      {
+        "name": "65348b61-fc6d-44d5-b38e-f85bf1572c7b",
+        "fromColumn": "Ürün Kategori ID",
+        "fromTable": "Ürün Alt Kategorileri",
+        "toColumn": "Ürün Kategori ID",
+        "toTable": "Ürün Kategorileri"
+      },
+      {
+        "name": "e32ed2c1-e502-4141-a690-a213dbfaabc4",
+        "fromColumn": "Mağaza ID",
+        "fromTable": "Satışlar",
+        "toColumn": "Mağaza ID",
+        "toTable": "Mağazalar"
+      },
+      {
+        "name": "0301e042-5e56-4141-a2a8-0732f7506eb1",
+        "fromColumn": "Ürün ID",
+        "fromTable": "Satışlar",
+        "toColumn": "Ürün ID",
+        "toTable": "Ürünler"
+      },
+      {
+        "name": "87e2f343-3a02-4f10-8458-81370b8e0c16",
+        "fromColumn": "Müşteri ID",
+        "fromTable": "Satışlar",
+        "toColumn": "Müşteri ID",
+        "toTable": "Müşteriler"
+      },
+      {
+        "name": "069141dc-eac4-4a09-9af9-8f3c9aab043e",
+        "fromColumn": "Doğum Tarihi",
+        "fromTable": "Müşteriler",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_908eb4fa-3bc0-497d-afd5-837cc7bb4a44"
+      },
+      {
+        "name": "018fb54c-59f9-4e25-a6a8-0ae6ba437a29",
+        "fromColumn": "İlk Satınalma Tarihi",
+        "fromTable": "Müşteriler",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_993058a0-503a-463b-86ca-58655ef4db2f"
+      },
+      {
+        "name": "e9627282-59fc-468f-b499-88743bcc942b",
+        "fromColumn": "Açılış Tarihi",
+        "fromTable": "Mağazalar",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_d8abef6a-d543-4bd0-b4cd-57ee41c970a1"
+      },
+      {
+        "name": "e0b64e0e-9c86-44fe-a232-77a34432aa10",
+        "fromColumn": "Kapanış Tarihi",
+        "fromTable": "Mağazalar",
+        "joinOnDateBehavior": "datePartOnly",
+        "toColumn": "Date",
+        "toTable": "LocalDateTable_d47d41da-e80d-4b08-b442-3e31e2dc8936"
+      },
+      {
+        "name": "47ea0c01-5e93-49f0-920a-38ece45811cd",
+        "fromColumn": "Tarih",
+        "fromTable": "Satışlar",
+        "toColumn": "Tarih",
+        "toTable": "Tarih"
+      },
+      {
+        "name": "b6d3eedd-69dd-4d1f-be4c-b839c742c128",
+        "fromColumn": "Teslim Tarihi",
+        "fromTable": "Satışlar",
+        "isActive": false,
+        "toColumn": "Tarih",
+        "toTable": "Tarih"
+      },
+      {
+        "name": "6f665eae-0eb5-48c4-9461-5cfcaa7571a9",
+        "fromColumn": "Termin Tarihi",
+        "fromTable": "Satışlar",
+        "isActive": false,
+        "toColumn": "Tarih",
+        "toTable": "Tarih"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Müşteriler",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Exception"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Müşteri ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "c4a3732c-dea9-473f-864a-38d982381601",
+            "sourceColumn": "Müşteri ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Bölge ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "cff728e2-4138-4fd2-b60a-0a6c02fa215b",
+            "sourceColumn": "Bölge ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Müşteri Kodu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4febb06a-69a9-466e-a6f7-7ee030a4941a",
+            "sourceColumn": "Müşteri Kodu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "İsim",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d29ad071-ca5d-4e5c-827e-36748de108c5",
+            "sourceColumn": "İsim",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Doğum Tarihi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "56c9bc18-df2c-4dd0-8173-b6b1d30d211a",
+            "sourceColumn": "Doğum Tarihi",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_908eb4fa-3bc0-497d-afd5-837cc7bb4a44"
+                },
+                "isDefault": true,
+                "relationship": "069141dc-eac4-4a09-9af9-8f3c9aab043e"
+              }
+            ]
+          },
+          {
+            "name": "Evli-Bekar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b9a4bfc1-9a65-4759-9909-cf6669cee2fd",
+            "sourceColumn": "Evli-Bekar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cinsiyet",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "564a6943-b2b8-4055-a782-818a06c30209",
+            "sourceColumn": "Cinsiyet",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Yıllık Gelir",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "71d09b48-3d28-43ea-b987-5fe0c370af28",
+            "sourceColumn": "Yıllık Gelir",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Çocuk Sayısı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "0f0eec84-a822-47cd-9e39-56c6982a4fbb",
+            "sourceColumn": "Çocuk Sayısı",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Eğitim Durumu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f7fa39a0-5f33-4292-8812-d50622c26398",
+            "sourceColumn": "Eğitim Durumu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "House Ownership",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "22e3850b-0b38-4a1f-926c-d05f3dbed215",
+            "sourceColumn": "House Ownership",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Araba Sayısı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "6dab1785-0f7d-4dd2-8b26-5240c5de0424",
+            "sourceColumn": "Araba Sayısı",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Kıta",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Continent",
+            "dataType": "string",
+            "lineageTag": "36adf22a-8cdb-420d-a1af-1d72f39eb841",
+            "sourceColumn": "Kıta",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Şehir",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "City",
+            "dataType": "string",
+            "lineageTag": "e72ba559-821b-4816-976b-43af41d5b3e3",
+            "sourceColumn": "Şehir",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Eyalet",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a2c91960-1fd1-4e65-81b5-fafd440f2a66",
+            "sourceColumn": "Eyalet",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ülke",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Country",
+            "dataType": "string",
+            "lineageTag": "13817e19-8fa8-43db-a6a7-3343d56a6966",
+            "sourceColumn": "Ülke",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "İlk Satınalma Tarihi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "19a653df-4c2d-414d-9524-7486fc6f35d0",
+            "sourceColumn": "İlk Satınalma Tarihi",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_993058a0-503a-463b-86ca-58655ef4db2f"
+                },
+                "isDefault": true,
+                "relationship": "018fb54c-59f9-4e25-a6a8-0ae6ba437a29"
+              }
+            ]
+          },
+          {
+            "name": "Müşteri Tipi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a88846a1-68d0-4b8b-8b50-ebecc5ec6bd9",
+            "sourceColumn": "Müşteri Tipi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Şirket Adı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c05e333e-161a-4840-a686-b2e66f14a4d8",
+            "sourceColumn": "Şirket Adı",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "M.Yaşı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "expression": "YEARFRAC('Müşteriler'[Doğum Tarihi],TODAY())",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "ba4facb7-babc-475e-b03a-354e4258d5b0",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "9b0122eb-b7c4-4a11-b4d8-6648218b82f8",
+        "partitions": [
+          {
+            "name": "Müşteriler",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    dbo_Customer = Source{[Schema=\"dbo\",Item=\"Customer\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(dbo_Customer,{{\"CustomerKey\", \"Müşteri ID\"}, {\"GeographyKey\", \"Bölge ID\"}, {\"Customer Code\", \"Müşteri Kodu\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Title\"}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns\",{{\"Birth Date\", \"Doğum Tarihi\"}, {\"Marital Status\", \"Evli-Bekar\"}, {\"Gender\", \"Cinsiyet\"}, {\"Yearly Income\", \"Yıllık Gelir\"}, {\"Total Children\", \"Çocuk Sayısı\"}}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed Columns1\",{\"Children At Home\", \"Occupation\"}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Removed Columns1\",{{\"Cars Owned\", \"Araba Sayısı\"}, {\"Continent\", \"Kıta\"}, {\"City\", \"Şehir\"}, {\"State\", \"Eyalet\"}, {\"Country\", \"Ülke\"}, {\"Date First Purchase\", \"İlk Satınalma Tarihi\"}, {\"Customer Type\", \"Müşteri Tipi\"}, {\"Company Name\", \"Şirket Adı\"}, {\"Education\", \"Eğitim Durumu\"}, {\"Name\", \"İsim\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns2\",\"M\",\"Evli\",Replacer.ReplaceText,{\"Evli-Bekar\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"S\",\"Bekar\",Replacer.ReplaceText,{\"Evli-Bekar\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"M\",\"Erkek\",Replacer.ReplaceText,{\"Cinsiyet\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"F\",\"Kadın\",Replacer.ReplaceText,{\"Cinsiyet\"}),",
+                "    #\"Replaced Value4\" = Table.ReplaceValue(#\"Replaced Value3\",\"Partial College\",\"Orta Öğrenim\",Replacer.ReplaceText,{\"Eğitim Durumu\"}),",
+                "    #\"Replaced Value5\" = Table.ReplaceValue(#\"Replaced Value4\",\"Graduate Degree\",\"Lisans\",Replacer.ReplaceText,{\"Eğitim Durumu\"}),",
+                "    #\"Replaced Value6\" = Table.ReplaceValue(#\"Replaced Value5\",\"Partial High School\",\"Lise\",Replacer.ReplaceText,{\"Eğitim Durumu\"}),",
+                "    #\"Replaced Value7\" = Table.ReplaceValue(#\"Replaced Value6\",\"High School\",\"Kolej\",Replacer.ReplaceText,{\"Eğitim Durumu\"}),",
+                "    #\"Replaced Value8\" = Table.ReplaceValue(#\"Replaced Value7\",\"Bachelors\",\"Master-Doktora\",Replacer.ReplaceText,{\"Eğitim Durumu\"}),",
+                "    #\"Replaced Value9\" = Table.ReplaceValue(#\"Replaced Value8\",\"House Owner\",\"Ev Sahibi\",Replacer.ReplaceText,{\"House Ownership\"}),",
+                "    #\"Replaced Value10\" = Table.ReplaceValue(#\"Replaced Value9\",\"No Owner\",\"Kiracı\",Replacer.ReplaceText,{\"House Ownership\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value10\",{{\"İlk Satınalma Tarihi\", type date}}),",
+                "    #\"Replaced Value11\" = Table.ReplaceValue(#\"Changed Type\",\"Person\",\"Bireysel\",Replacer.ReplaceText,{\"Müşteri Tipi\"}),",
+                "    #\"Replaced Value12\" = Table.ReplaceValue(#\"Replaced Value11\",\"Company\",\"Kurumsal\",Replacer.ReplaceText,{\"Müşteri Tipi\"}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Replaced Value12\",{{\"Doğum Tarihi\", type date}})",
+                "in",
+                "    #\"Changed Type1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Tarih",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Exception"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Tarih",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "isKey": true,
+            "lineageTag": "7eb470a0-5957-4a82-9093-e86f7481a8af",
+            "sourceColumn": "Tarih",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Tarih Anahtarı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "49c97708-088b-4acf-a405-5a90daeb2095",
+            "sourceColumn": "Tarih Anahtarı",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Yıl",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "94c5ce71-45ae-415b-9913-aa5cfb0a3d79",
+            "sourceColumn": "Yıl",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ay #",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "0253b14f-ab02-4053-86bd-8153a5bbf527",
+            "sourceColumn": "Ay #",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "İş Günü-HaftaSonu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a95979f2-6f02-404d-8087-cef58e41f6e5",
+            "sourceColumn": "İş Günü-HaftaSonu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sezon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ea108f34-3745-49ee-9943-b151c8478007",
+            "sourceColumn": "Sezon",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ay",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e877fa44-4ff4-4258-89b1-18b67d58112e",
+            "sortByColumn": "Ay #",
+            "sourceColumn": "Ay",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ayın Günü #",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "78735a23-cd3f-4155-9eac-f07252cf827a",
+            "sourceColumn": "Ayın Günü #",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Haftanın Günü",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "251869b9-bc7d-40e6-9dbf-f8cca2f1b357",
+            "sourceColumn": "Haftanın Günü",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Gün",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a21ed0b2-49b7-4174-81f5-f2218b5eb597",
+            "sourceColumn": "Gün",
+            "summarizeBy": "none"
+          }
+        ],
+        "dataCategory": "Time",
+        "lineageTag": "8677e2fa-f2b1-46ea-ad02-b92630a44a85",
+        "partitions": [
+          {
+            "name": "Tarih",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    dbo_Date = Source{[Schema=\"dbo\",Item=\"Date\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(dbo_Date,{{\"Date\", type date}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Date\", \"Tarih\"}, {\"DateKey\", \"Tarih Anahtarı\"}, {\"Calendar Year Number\", \"Yıl\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Calendar Year\", \"Calendar Year Quarter Number\", \"Calendar Year Quarter\", \"Calendar Year Month Number\", \"Calendar Year Month\", \"Is Holiday\", \"Holiday Name\", \"Month\"}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns\",{{\"Month Number\", \"Ay #\"}}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed Columns1\",{\"Asia Season\", \"North America Season\"}),",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(#\"Removed Columns1\", \"Tarih\", \"Tarih - Copy\"),",
+                "    #\"Extracted Month Name\" = Table.TransformColumns(#\"Duplicated Column\", {{\"Tarih - Copy\", each Date.MonthName(_, \"tr-TR\"), type text}}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Extracted Month Name\",{{\"Tarih - Copy\", \"Ay\"}}),",
+                "    #\"Inserted Day\" = Table.AddColumn(#\"Renamed Columns2\", \"Day\", each Date.Day([Tarih]), Int64.Type),",
+                "    #\"Renamed Columns3\" = Table.RenameColumns(#\"Inserted Day\",{{\"Day\", \"Ayın Günü #\"}}),",
+                "    #\"Duplicated Column1\" = Table.DuplicateColumn(#\"Renamed Columns3\", \"Tarih\", \"Tarih - Copy\"),",
+                "    #\"Calculated Day of Week\" = Table.TransformColumns(#\"Duplicated Column1\",{{\"Tarih - Copy\", Date.DayOfWeek, Int64.Type}}),",
+                "    #\"Renamed Columns4\" = Table.RenameColumns(#\"Calculated Day of Week\",{{\"Tarih - Copy\", \"Haftanın Günü\"}, {\"Working Day\", \"İş Günü-HaftaSonu\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns4\",\"WorkDay\",\"İş Günü\",Replacer.ReplaceText,{\"İş Günü-HaftaSonu\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"WeekEnd\",\"Hafta Sonu\",Replacer.ReplaceText,{\"İş Günü-HaftaSonu\"}),",
+                "    #\"Renamed Columns5\" = Table.RenameColumns(#\"Replaced Value1\",{{\"Europe Season\", \"Sezon\"}}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Renamed Columns5\",\"Back to School\",\"Okul Açılışı\",Replacer.ReplaceText,{\"Sezon\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"Holiday\",\"Tatil\",Replacer.ReplaceText,{\"Sezon\"}),",
+                "    #\"Replaced Value4\" = Table.ReplaceValue(#\"Replaced Value3\",\"Spring/Business\",\"Bahar/İş Dönemi\",Replacer.ReplaceText,{\"Sezon\"}),",
+                "    #\"Replaced Value5\" = Table.ReplaceValue(#\"Replaced Value4\",\"None\",\"Yok\",Replacer.ReplaceText,{\"Sezon\"}),",
+                "    #\"Duplicated Column2\" = Table.DuplicateColumn(#\"Replaced Value5\", \"Tarih\", \"Tarih - Copy\"),",
+                "    #\"Extracted Day Name\" = Table.TransformColumns(#\"Duplicated Column2\", {{\"Tarih - Copy\", each Date.DayOfWeekName(_, \"tr-TR\"), type text}}),",
+                "    #\"Renamed Columns6\" = Table.RenameColumns(#\"Extracted Day Name\",{{\"Tarih - Copy\", \"Gün\"}})",
+                "in",
+                "    #\"Renamed Columns6\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ürünler",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Ürün ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "d38d9cf1-2704-4adc-bcc4-f9aeb5296ef4",
+            "sourceColumn": "Ürün ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ürün Kodu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c15d3f4b-b934-4a3c-a775-89489046f083",
+            "sourceColumn": "Ürün Kodu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ürün",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "40d13d84-435c-44d2-a1b8-e7a8b7ad53d0",
+            "sourceColumn": "Ürün",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ürün Tanımı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bffd9b15-f02b-4a91-a883-66fa5a0c9dda",
+            "sourceColumn": "Ürün Tanımı",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ürün Alt Kategori ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "4298ec84-ce4b-4bf3-9d91-a532446614fe",
+            "sourceColumn": "Ürün Alt Kategori ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Üretici",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "60ec48a0-76ad-41e3-ae02-e7a6d17f4d76",
+            "sourceColumn": "Üretici",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Marka",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5f4b4eca-847c-4d89-8725-e43cebe4bfd9",
+            "sourceColumn": "Marka",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sınıf",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f2e4b768-ff21-410b-be6a-85e37737c16b",
+            "sourceColumn": "Sınıf",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Renk",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dd527226-fd17-466b-8228-3ef0a1fcad3f",
+            "sourceColumn": "Renk",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ölçü",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a860ef09-52fb-4079-9bad-8ef31bf4749f",
+            "sourceColumn": "Ölçü",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ağırlık",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "129bf87d-348a-446d-9e70-c9ba3ee56e71",
+            "sourceColumn": "Ağırlık",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Ağırlık Birimi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a5a44607-58cb-4d0d-a868-cab61d0a9413",
+            "sourceColumn": "Ağırlık Birimi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Stok Tipi Kodu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2e43e9bb-e9ea-4c9b-93d2-cf78bb913fea",
+            "sourceColumn": "Stok Tipi Kodu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Stok Tipi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2f6f9431-9d2e-447d-bf90-547bac66cc26",
+            "sourceColumn": "Stok Tipi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Birim Maliyet",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "8c587b08-02a5-45f5-b606-8105d7e1c8e5",
+            "sourceColumn": "Birim Maliyet",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Birim Fiyat",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "\"₺\"#,0.###############;(\"₺\"#,0.###############);\"₺\"#,0.###############",
+            "lineageTag": "514b5aeb-bf51-4c2c-8ce4-b18e52735e93",
+            "sourceColumn": "Birim Fiyat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Durum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "841a3608-b022-4141-bc61-3e936de3fa2e",
+            "sourceColumn": "Durum",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Alt Kategori",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "RELATED('Ürün Alt Kategorileri'[Alt Kategori])",
+            "isDataTypeInferred": true,
+            "lineageTag": "e104973a-b57c-4e79-9095-04d8100c1911",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Kategori",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "RELATED('Ürün Kategorileri'[Kategori])",
+            "isDataTypeInferred": true,
+            "lineageTag": "b08a529d-fa27-481a-a9ff-ba5c1618a876",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Kaç Kez Satıldı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "COUNTROWS(RELATEDTABLE('Satışlar'))",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "ff8c85c2-5868-487e-9f5f-79429e0905c8",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "81e011d8-cf1c-47f2-83fc-815004478d2d",
+        "partitions": [
+          {
+            "name": "Ürünler",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    dbo_Product = Source{[Schema=\"dbo\",Item=\"Product\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(dbo_Product,{{\"ProductSubcategoryKey\", \"Ürün Alt Kategori ID\"}, {\"ProductKey\", \"Ürün ID\"}, {\"Product Code\", \"Ürün Kodu\"}, {\"Product Name\", \"Ürün\"}, {\"Product Description\", \"Ürün Tanımı\"}, {\"Manufacturer\", \"Üretici\"}, {\"Brand\", \"Marka\"}, {\"Class\", \"Sınıf\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Style\"}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns\",{{\"Color\", \"Renk\"}, {\"Size\", \"Ölçü\"}, {\"Weight\", \"Ağırlık\"}, {\"Weight Unit Measure\", \"Ağırlık Birimi\"}, {\"Stock Type Code\", \"Stok Tipi Kodu\"}, {\"Stock Type\", \"Stok Tipi\"}, {\"Unit Cost\", \"Birim Maliyet\"}, {\"Unit Price\", \"Birim Fiyat\"}}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed Columns1\",{\"Available Date\"}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Removed Columns1\",{{\"Status\", \"Durum\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns2\",\"On\",\"Kullanımda\",Replacer.ReplaceText,{\"Durum\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"Low\",\"Düşük\",Replacer.ReplaceText,{\"Stok Tipi\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"High\",\"Yüksek\",Replacer.ReplaceText,{\"Stok Tipi\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"Mid\",\"Orta\",Replacer.ReplaceText,{\"Stok Tipi\"}),",
+                "    #\"Replaced Value4\" = Table.ReplaceValue(#\"Replaced Value3\",\"Silver\",\"Gümüş\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value5\" = Table.ReplaceValue(#\"Replaced Value4\",\"Pink\",\"Pembe\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value6\" = Table.ReplaceValue(#\"Replaced Value5\",\"Blue\",\"Mavi\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value7\" = Table.ReplaceValue(#\"Replaced Value6\",\"White\",\"Beyaz\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value8\" = Table.ReplaceValue(#\"Replaced Value7\",\"Black\",\"Siyah\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value9\" = Table.ReplaceValue(#\"Replaced Value8\",\"Yellow\",\"Sarı\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value10\" = Table.ReplaceValue(#\"Replaced Value9\",\"Brown\",\"Kahverengi\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value11\" = Table.ReplaceValue(#\"Replaced Value10\",\"Gold\",\"Altın\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value12\" = Table.ReplaceValue(#\"Replaced Value11\",\"Green\",\"Yeşil\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value13\" = Table.ReplaceValue(#\"Replaced Value12\",\"Grey\",\"Gri\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value14\" = Table.ReplaceValue(#\"Replaced Value13\",\"Red\",\"Kırmızı\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value15\" = Table.ReplaceValue(#\"Replaced Value14\",\"Orange\",\"Turuncu\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value16\" = Table.ReplaceValue(#\"Replaced Value15\",\"Purple\",\"Mor\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value17\" = Table.ReplaceValue(#\"Replaced Value16\",\"Transparent\",\"Transparan\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value18\" = Table.ReplaceValue(#\"Replaced Value17\",\"Azure\",\"Gök Mavisi\",Replacer.ReplaceText,{\"Renk\"}),",
+                "    #\"Replaced Value19\" = Table.ReplaceValue(#\"Replaced Value18\",\"Economy\",\"Ekonomik\",Replacer.ReplaceText,{\"Sınıf\"}),",
+                "    #\"Replaced Value20\" = Table.ReplaceValue(#\"Replaced Value19\",\"Deluxe\",\"Lüks\",Replacer.ReplaceText,{\"Sınıf\"}),",
+                "    #\"Replaced Value21\" = Table.ReplaceValue(#\"Replaced Value20\",\"Regular\",\"Normal\",Replacer.ReplaceText,{\"Sınıf\"})",
+                "in",
+                "    #\"Replaced Value21\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ürün Kategorileri",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Ürün Kategori ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "942859d4-85e3-4f31-bd2e-1a8ba2b1e85a",
+            "sourceColumn": "Ürün Kategori ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Kategori Kodu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "29abb4a9-80e7-4a27-a365-46373173bdb2",
+            "sourceColumn": "Kategori Kodu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Kategori",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e05ba150-2d32-4d4b-9f0d-a11b5ce89441",
+            "sourceColumn": "Kategori",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Kaç Kez Satıldı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "COUNTROWS(RELATEDTABLE('Satışlar'))",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "da26465b-3485-4ddf-abfd-59da38a8b599",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Satış Tutarı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "expression": [
+              "",
+              "SUMX(FILTER(RELATEDTABLE('Satışlar') , 'Satışlar'[Fiyat] > 10  ) ,",
+              "'Satışlar'[Fiyat] * 'Satışlar'[Miktar]",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "2371ba6f-43c9-4de5-b0d6-72904865ebd7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Satış Tutarı 2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "expression": "CALCULATE(SUM('Satışlar'[Tutar] ))",
+            "isDataTypeInferred": true,
+            "lineageTag": "4526699f-f371-4645-9789-dba20368d9f5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Satış Tutarı 3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "expression": "CALCULATE([Toplam Satışlar])",
+            "isDataTypeInferred": true,
+            "lineageTag": "ab496848-0f00-4903-9669-d4f16458f300",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "5909fd35-68da-46cb-bffa-2d056722348e",
+        "partitions": [
+          {
+            "name": "Ürün Kategorileri",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    #\"dbo_Product Category\" = Source{[Schema=\"dbo\",Item=\"Product Category\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"dbo_Product Category\",{{\"ProductCategoryKey\", \"Ürün Kategori ID\"}, {\"Category Code\", \"Kategori Kodu\"}, {\"Category\", \"Kategori\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns\",\"TV and Video\",\"TV ve Video\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"Computers\",\"Bilgisayarlar\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"Audio\",\"Ses Sistemleri\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"Cell phones\",\"Cep Telefonları\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value4\" = Table.ReplaceValue(#\"Replaced Value3\",\"Cameras and camcorders\",\"Kameralar\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value5\" = Table.ReplaceValue(#\"Replaced Value4\",\"Music, Movies and Ses Sistemleri Books\",\"Kitap-CD\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value6\" = Table.ReplaceValue(#\"Replaced Value5\",\"Games and Toys\",\"Oyun Oyuncak\",Replacer.ReplaceText,{\"Kategori\"}),",
+                "    #\"Replaced Value7\" = Table.ReplaceValue(#\"Replaced Value6\",\"Home Appliances\",\"Ev Aletleri\",Replacer.ReplaceText,{\"Kategori\"})",
+                "in",
+                "    #\"Replaced Value7\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Ürün Alt Kategorileri",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Ürün Alt Kategori ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "78df9b82-d59c-4f90-b7b9-ffec02699e69",
+            "sourceColumn": "Ürün Alt Kategori ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Alt Kategori Kodu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "11f96761-5b24-4142-a1b2-e4c7119c9397",
+            "sourceColumn": "Alt Kategori Kodu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Alt Kategori",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0399e2da-1e46-4cf2-afcd-764b5cc1b6ca",
+            "sourceColumn": "Alt Kategori",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ürün Kategori ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "3d01d584-0de0-473d-bdf2-6a1c45877111",
+            "sourceColumn": "Ürün Kategori ID",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "3064d95b-1f5a-4bdb-8efe-67934bec4613",
+        "partitions": [
+          {
+            "name": "Ürün Alt Kategorileri",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    #\"dbo_Product Subcategory\" = Source{[Schema=\"dbo\",Item=\"Product Subcategory\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"dbo_Product Subcategory\",{{\"ProductSubcategoryKey\", \"Ürün Alt Kategori ID\"}, {\"Subcategory Code\", \"Alt Kategori Kodu\"}, {\"Subcategory\", \"Alt Kategori\"}, {\"ProductCategoryKey\", \"Ürün Kategori ID\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns\",\"Radio\",\"Radyo\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"Headphones\",\"Kulaklık\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"Speakers\",\"Hoparlör\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"Recorder\",\"Kayıt Cihazı\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value4\" = Table.ReplaceValue(#\"Replaced Value3\",\"Audio Accessories\",\"Ses Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value5\" = Table.ReplaceValue(#\"Replaced Value4\",\"Televisions\",\"TV\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value6\" = Table.ReplaceValue(#\"Replaced Value5\",\"Recording Pen\",\"Kayıt Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value7\" = Table.ReplaceValue(#\"Replaced Value6\",\"Home Theater System\",\"Ev Sinema Sistemi\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value8\" = Table.ReplaceValue(#\"Replaced Value7\",\"Car Video\",\"Araç Video\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value9\" = Table.ReplaceValue(#\"Replaced Value8\",\"TV & Video Accessories\",\"TV Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value10\" = Table.ReplaceValue(#\"Replaced Value9\",\"Laptops\",\"Dizüstü\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value11\" = Table.ReplaceValue(#\"Replaced Value10\",\"Desktops\",\"Masaüstü\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value12\" = Table.ReplaceValue(#\"Replaced Value11\",\"Projectors & Screens\",\"Projeksiyon\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value13\" = Table.ReplaceValue(#\"Replaced Value12\",\"Printers, Scanners & Fax\",\"Yazıcı Tarayıcı\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value14\" = Table.ReplaceValue(#\"Replaced Value13\",\"Computer Setup & Service\",\"Servis Hizmet\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value15\" = Table.ReplaceValue(#\"Replaced Value14\",\"Computers Accessories\",\"Bilgisayar Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value16\" = Table.ReplaceValue(#\"Replaced Value15\",\"Digital Cameras\",\"Dijital Kameralar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value17\" = Table.ReplaceValue(#\"Replaced Value16\",\"Digital SLR Cameras\",\"SLR Kameralar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value18\" = Table.ReplaceValue(#\"Replaced Value17\",\"Film Cameras\",\"Film Kameralar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value19\" = Table.ReplaceValue(#\"Replaced Value18\",\"Camcorders\",\"Video Kayıt\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value20\" = Table.ReplaceValue(#\"Replaced Value19\",\"Cameras & Video Kayıt Accessories\",\"Kamera Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value21\" = Table.ReplaceValue(#\"Replaced Value20\",\"Home & Office Phones\",\"Ev Telefonu\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value22\" = Table.ReplaceValue(#\"Replaced Value21\",\"Touch Screen Phones\",\"Dokunmatik Ekranlar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value23\" = Table.ReplaceValue(#\"Replaced Value22\",\"Smart phones & PDAs\",\"Akıllı Telefonlar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value24\" = Table.ReplaceValue(#\"Replaced Value23\",\"Monitors\",\"Monitörler\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value25\" = Table.ReplaceValue(#\"Replaced Value24\",\"Cell phones Accessories\",\"Cep Telefonu Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value26\" = Table.ReplaceValue(#\"Replaced Value25\",\"Music CD\",\"Müzik CD\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value27\" = Table.ReplaceValue(#\"Replaced Value26\",\"Movie DVD\",\"Film DVD\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value28\" = Table.ReplaceValue(#\"Replaced Value27\",\"Audio Books\",\"Sesli Kitap\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value29\" = Table.ReplaceValue(#\"Replaced Value28\",\"Boxed Games\",\"Kutulu Oyunlar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value30\" = Table.ReplaceValue(#\"Replaced Value29\",\"Download Games\",\"Online Oyunlar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value31\" = Table.ReplaceValue(#\"Replaced Value30\",\"Games Accessories\",\"Oyun Aksesuar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value32\" = Table.ReplaceValue(#\"Replaced Value31\",\"Washers & Dryers\",\"Çamaşır Makineleri\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value33\" = Table.ReplaceValue(#\"Replaced Value32\",\"Refrigerators\",\"Soğutucular\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value34\" = Table.ReplaceValue(#\"Replaced Value33\",\"Microwaves\",\"Mikrodalga Fırınlar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value35\" = Table.ReplaceValue(#\"Replaced Value34\",\"Water Heaters\",\"Su Isıtıcıları\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value36\" = Table.ReplaceValue(#\"Replaced Value35\",\"Coffee Machines\",\"Kahve Makinası\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value37\" = Table.ReplaceValue(#\"Replaced Value36\",\"Lamps\",\"Aydınlatma\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value38\" = Table.ReplaceValue(#\"Replaced Value37\",\"Air Conditioners\",\"Klimalar\",Replacer.ReplaceText,{\"Alt Kategori\"}),",
+                "    #\"Replaced Value39\" = Table.ReplaceValue(#\"Replaced Value38\",\"Fans\",\"Vantilatör\",Replacer.ReplaceText,{\"Alt Kategori\"})",
+                "in",
+                "    #\"Replaced Value39\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Satışlar",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Mağaza ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "5fd19165-57d9-4b5b-bb67-e1034dfd12c9",
+            "sourceColumn": "Mağaza ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ürün ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "603b7f45-46ec-4f45-865e-7d8916169f7b",
+            "sourceColumn": "Ürün ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Müşteri ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "aa866b91-fe27-4e0b-ad2f-74187e2fd123",
+            "sourceColumn": "Müşteri ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Tarih",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "15bd23bd-7480-48be-82d3-5c8069f86e8e",
+            "sourceColumn": "Tarih",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Termin Tarihi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "776c5ec9-a3f6-46a8-b82d-37aeed1a8717",
+            "sourceColumn": "Termin Tarihi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Teslim Tarihi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "8fd67714-4fa3-4a92-af06-9b19cdf4de87",
+            "sourceColumn": "Teslim Tarihi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Miktar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "#,0",
+            "lineageTag": "7b839428-ea2f-40f9-8fba-9d220b935499",
+            "sourceColumn": "Miktar",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Birim Fiyat",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "#,0.00",
+            "lineageTag": "61a98157-4824-47b0-8ccd-38edfe126c31",
+            "sourceColumn": "Birim Fiyat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Birim İndirim",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "#,0.00",
+            "lineageTag": "07e0d73e-1058-4540-b9a4-44a9dacea68f",
+            "sourceColumn": "Birim İndirim",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Fiyat",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "#,0.00",
+            "lineageTag": "71251234-ced5-4799-a733-95513de9539b",
+            "sourceColumn": "Fiyat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Tutar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "expression": "'Satışlar'[Fiyat] * 'Satışlar'[Miktar]",
+            "isDataTypeInferred": true,
+            "lineageTag": "85be9306-8de0-4775-ab7a-8b3939461cb3",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Maliyet",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "expression": "RELATED('Ürünler'[Birim Maliyet] )",
+            "isDataTypeInferred": true,
+            "lineageTag": "16fa1c81-a535-435c-aa81-80b700074950",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Aynı Şehir Farklı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              "IF( RELATED('Mağazalar'[Şehir] ) = RELATED('Müşteriler'[Şehir] ) ,",
+              "    \"Aynı Şehir\" ,",
+              "    \"Farklı Şehir\"",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "902b15ff-da68-4516-b193-1fe1e13f5d88",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "96bee097-c9e7-46eb-930d-42fd48c03eab",
+        "partitions": [
+          {
+            "name": "Satışlar",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    dbo_Sales = Source{[Schema=\"dbo\",Item=\"Sales\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(dbo_Sales,{{\"OrderDateKey\", type text}, {\"DueDateKey\", type text}, {\"DeliveryDateKey\", type text}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Changed Type\",{{\"DueDateKey\", type date}, {\"DeliveryDateKey\", type date}, {\"OrderDateKey\", type date}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type1\",{{\"OrderDateKey\", \"Tarih\"}, {\"DueDateKey\", \"Termin Tarihi\"}, {\"DeliveryDateKey\", \"Teslim Tarihi\"}, {\"Quantity\", \"Miktar\"}, {\"Unit Price\", \"Birim Fiyat\"}, {\"Unit Discount\", \"Birim İndirim\"}, {\"Unit Cost\", \"Birim Maliyet\"}, {\"Net Price\", \"Fiyat\"}, {\"StoreKey\", \"Mağaza ID\"}, {\"ProductKey\", \"Ürün ID\"}, {\"CustomerKey\", \"Müşteri ID\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Birim Maliyet\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Mağazalar",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Mağaza ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "194e5ade-d22f-413e-9bfa-5a210845a4eb",
+            "sourceColumn": "Mağaza ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Bölge ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "3d89812b-ab98-434d-aaf0-620313618bc4",
+            "sourceColumn": "Bölge ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Mağaza Müdürü ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "1531a535-8652-42da-961a-a4c5cbd87803",
+            "sourceColumn": "Mağaza Müdürü ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Mağaza Tipi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Company",
+            "dataType": "string",
+            "lineageTag": "b05a127f-d7ab-4724-8e10-02329b6571d3",
+            "sourceColumn": "Mağaza Tipi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Mağaza Adı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cdf19737-2920-4511-a523-73f33fac83c2",
+            "sourceColumn": "Mağaza Adı",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Durum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ea6c0b73-e126-41d5-8d29-f6034c1e72a3",
+            "sourceColumn": "Durum",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Açılış Tarihi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "806a8e10-29c9-4bc1-ac3d-cb4032425ed6",
+            "sourceColumn": "Açılış Tarihi",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_d8abef6a-d543-4bd0-b4cd-57ee41c970a1"
+                },
+                "isDefault": true,
+                "relationship": "e9627282-59fc-468f-b499-88743bcc942b"
+              }
+            ]
+          },
+          {
+            "name": "Kapanış Tarihi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Short Date",
+            "lineageTag": "0a6cbb70-db5e-4399-8013-16187ff281c9",
+            "sourceColumn": "Kapanış Tarihi",
+            "summarizeBy": "none",
+            "variations": [
+              {
+                "name": "Variation",
+                "defaultHierarchy": {
+                  "hierarchy": "Date Hierarchy",
+                  "table": "LocalDateTable_d47d41da-e80d-4b08-b442-3e31e2dc8936"
+                },
+                "isDefault": true,
+                "relationship": "e0b64e0e-9c86-44fe-a232-77a34432aa10"
+              }
+            ]
+          },
+          {
+            "name": "Zip Kodu",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "PostalCode",
+            "dataType": "string",
+            "lineageTag": "20dcfa19-2739-4127-acc0-ac51071f89a0",
+            "sourceColumn": "Zip Kodu",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Kıta",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Continent",
+            "dataType": "string",
+            "lineageTag": "ac565572-a0da-4a92-bc2f-d5ab61dbb51d",
+            "sourceColumn": "Kıta",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Şehir",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "City",
+            "dataType": "string",
+            "lineageTag": "e6f71d07-804a-46ba-8b4a-de5cd3fc1623",
+            "sourceColumn": "Şehir",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Eyalet",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "76b1f847-620c-474e-905d-f8faa7834c5a",
+            "sourceColumn": "Eyalet",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Kapanma Sebebi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d8ab03a4-7728-4824-bc61-5fc491de6fe6",
+            "sourceColumn": "Kapanma Sebebi",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Çalışan Sayısı",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "lineageTag": "1c71cf93-92cf-416f-bba5-d6004510ede5",
+            "sourceColumn": "Çalışan Sayısı",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MetreKare",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "5c32b1d5-4526-4096-9838-541f66b162d3",
+            "sourceColumn": "MetreKare",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Ülke",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataCategory": "Country",
+            "dataType": "string",
+            "lineageTag": "47257c59-3dc1-4037-920c-87c55447a0a9",
+            "sourceColumn": "Ülke",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f6c8023e-8fb3-4e49-80db-cb266ec258f3",
+        "partitions": [
+          {
+            "name": "Mağazalar",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"ALIENWARE\", \"PBIContoso\"),",
+                "    dbo_Store = Source{[Schema=\"dbo\",Item=\"Store\"]}[Data],",
+                "    #\"Renamed Columns\" = Table.RenameColumns(dbo_Store,{{\"StoreKey\", \"Mağaza ID\"}, {\"GeographyKey\", \"Bölge ID\"}, {\"Store Manager\", \"Mağaza Müdürü ID\"}, {\"Store Type\", \"Mağaza Tipi\"}, {\"Store Name\", \"Mağaza Adı\"}, {\"Status\", \"Durum\"}, {\"Open Date\", \"Açılış Tarihi\"}, {\"Close Date\", \"Kapanış Tarihi\"}, {\"Zip Code\", \"Zip Kodu\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Zip Code Extension\"}),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns\",{{\"Continent\", \"Kıta\"}, {\"City\", \"Şehir\"}, {\"State\", \"Eyalet\"}, {\"Close Reason\", \"Kapanma Sebebi\"}, {\"Employees\", \"Çalışan Sayısı\"}, {\"Selling Area\", \"MetreKare\"}}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed Columns1\",{\"Last Remodel Date\"}),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Removed Columns1\",{{\"CountryRegion\", \"Ülke\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns2\",\"Store\",\"Mağaza\",Replacer.ReplaceText,{\"Mağaza Tipi\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"Catalog\",\"Katalog\",Replacer.ReplaceText,{\"Mağaza Tipi\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"On\",\"Açık\",Replacer.ReplaceText,{\"Durum\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"Off\",\"Kapandı\",Replacer.ReplaceText,{\"Durum\"}),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Replaced Value3\",{{\"Açılış Tarihi\", type date}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_f2b15ada-b913-4ebc-b02e-86fd0dcd5b59",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "1977358f-fb2f-4794-aaf5-025a3ec1c7d6",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b99f0507-b998-42ff-b168-f674ce971412",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3cf448e5-798b-4a08-9610-c6f00d49ec5b",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "63e3f8d9-3894-4f0c-8bb5-10ab86301396",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "743f1a7a-20ce-4e40-8b49-3bda80616f41",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "5fbfda3d-295d-48fc-8386-dd61c456075d",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "857a803f-b3d3-49c3-858a-d799e8b4dac3",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "5b1d200b-fc66-497d-9b02-b81f14756771",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "5cd51bdc-e936-48f3-a791-b15ca0402b76",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "b1117afd-4663-4cb8-9761-80a3a179a7cd",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "519dfb65-99d9-45a5-9a45-d038de3e209c",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "de5db5d5-5dcb-41ca-b998-ff9af8410644"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "e596fe54-8b5d-49dd-b8e4-653dd6a78831",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_f2b15ada-b913-4ebc-b02e-86fd0dcd5b59-f8356bcb-a5ae-4e5a-92d7-ba766529739a",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "LocalDateTable_908eb4fa-3bc0-497d-afd5-837cc7bb4a44",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "5da4bf39-6549-475f-89e8-5a055b3db86b",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "c1794022-68c2-4c1d-b9ed-b8eec5ea4772",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3e25028d-508b-47a5-95bc-384db2d84ac3",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "57a2b9e6-6ca8-45d8-a4b3-a08d32d405e2",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "249cc82b-580a-416c-bcb3-e9dc67812086",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "38395527-9473-4eb7-8265-58a666226088",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "18569d38-8b86-47d7-aab2-eadfdbef7bec",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "19101e6d-52e1-48a1-bc22-572185fb9581",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "e9d34d30-d5a1-4baf-b2f1-987df0762e73",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "c7340945-e3e0-47cc-ab91-454d2b37b271",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "34b4cc28-5e04-4e1e-ae94-ffa3b9f38d22",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "19fea34e-4fbd-426a-9726-2612ab91a639"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "1a8b47d1-ff4a-4c20-b450-1d1c6ee73604",
+        "partitions": [
+          {
+            "name": "LocalDateTable_908eb4fa-3bc0-497d-afd5-837cc7bb4a44-8ca7c8ed-436b-4462-8de2-8d9de2d26726",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Müşteriler'[Doğum Tarihi])), 1, 1), Date(Year(MAX('Müşteriler'[Doğum Tarihi])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_993058a0-503a-463b-86ca-58655ef4db2f",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "1d8638eb-0833-4a92-8683-9fbd25b924e4",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "92f63e3f-70c2-4c3a-9671-e1de48cdee2f",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "f5dd0257-f440-4efd-b74d-9f1915e30471",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "6668f314-7b48-4436-8e38-55d257750df7",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "9fb6fb2b-83ba-47d1-8913-81d1cec3a1ad",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "4378ca12-33ff-42db-865c-e177a37a7875",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "f4d3ffbd-d4fb-470e-bee8-05fef7c07083",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "025b52bd-61ff-4dbd-89a5-1607412e0eb4",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "fd3863a7-5cd3-480c-b186-fbb0287c0351",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "8388e668-92e8-4542-87e9-f85800c4d7d9",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "f6d26273-dcf1-458a-b7d4-f74008a6b766",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "a41182c9-2fe6-40fb-8580-6e605e7839d4"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "3f5a3ade-4ad7-4329-aaf7-6eb9497f4d89",
+        "partitions": [
+          {
+            "name": "LocalDateTable_993058a0-503a-463b-86ca-58655ef4db2f-d121ba5f-3cdd-4d3e-b9fe-052ef7a8bd77",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Müşteriler'[İlk Satınalma Tarihi])), 1, 1), Date(Year(MAX('Müşteriler'[İlk Satınalma Tarihi])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_d8abef6a-d543-4bd0-b4cd-57ee41c970a1",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "d7eacead-23f6-404b-8dcd-9d2b4429e58b",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "39523b6d-d601-420c-92d4-e0e4d88b1670",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "0606bc4d-097c-4ddb-854f-7b1846dcaaf7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "a7f78c99-5616-4eb4-b81b-5b187d1acf80",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "0b6bdd46-3fd7-4020-88ec-564771485cee",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "97e6a24f-0040-4a42-8982-88540a56575d",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "a081c90d-fc3b-4c33-b455-08650065f053",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "f7be5c5c-f690-4ff8-85b4-fdccb60b97e3",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "1fce991c-1d51-4a13-bfa7-61a87b4af459",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "b89ebd9b-b811-4318-8003-aac714931bcd",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "5a1d0179-d692-429a-8031-bf631f68cc22",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "bdb616b4-834d-47e4-89f7-e099b5390355"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "309e3041-0c5d-43e0-ad6e-8b3f94e1913f",
+        "partitions": [
+          {
+            "name": "LocalDateTable_d8abef6a-d543-4bd0-b4cd-57ee41c970a1-e025fba8-fb28-4a50-82b2-01e1c5626854",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Mağazalar'[Açılış Tarihi])), 1, 1), Date(Year(MAX('Mağazalar'[Açılış Tarihi])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "LocalDateTable_d47d41da-e80d-4b08-b442-3e31e2dc8936",
+        "annotations": [
+          {
+            "name": "__PBI_LocalDateTable",
+            "value": "true"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "61c19a30-1001-4599-bebd-4f5cd5cadf13",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3f027545-e178-4c05-a431-8ec3adb7ac5f",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "f9a68480-41fa-416f-b510-9d2933828de8",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "3dcd6433-172d-4e91-abc1-8f53beac3334",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b439bb54-50d6-4815-9722-1781eb557793",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "cfe77ff9-554e-4f9c-a96c-5d99d7f88b4a",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              },
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "287a0505-0e16-48c8-920c-b1c8fa89dc62",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "407a83f6-f690-404c-9fc4-1389e941bb3f",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "3c25194f-c7f8-4117-94a7-45a399c8d3cf",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "d326d82d-a7db-497c-9f68-c77b7a4be666",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "c68c8256-68fe-40f1-ac81-40cb530aa6da",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "86dbc12d-d3e3-4ba2-abc1-c05893bab9f2"
+          }
+        ],
+        "isHidden": true,
+        "lineageTag": "1a7d26ef-e405-4f77-8c1c-3a1f64b44cfc",
+        "partitions": [
+          {
+            "name": "LocalDateTable_d47d41da-e80d-4b08-b442-3e31e2dc8936-cbf628df-4227-4187-a51e-01c70b551700",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(Year(MIN('Mağazalar'[Kapanış Tarihi])), 1, 1), Date(Year(MAX('Mağazalar'[Kapanış Tarihi])), 12, 31))",
+              "type": "calculated"
+            }
+          }
+        ],
+        "showAsVariationsOnly": true
+      },
+      {
+        "name": "Ölçüler",
+        "annotations": [
+          {
+            "name": "PBI_QueryRelationships",
+            "value": "{\"columnCount\":1,\"keyColumnNames\":[],\"queryRelationships\":[],\"columnIdentities\":[\"Section1/Metrikler (2)/Changed Type.{Column1,0}\"],\"ColumnCount\":1,\"KeyColumnNames\":[],\"ColumnIdentities\":[\"Section1/Metrikler (2)/Changed Type.{Column1,0}\"],\"RelationshipInfo\":[]}"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "a7c82d2a-d8ab-4bb1-8ca9-cc2b4412324b",
+            "sourceColumn": "Column1",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "04d6846d-21a4-4468-945d-ae0da4f72728",
+        "measures": [
+          {
+            "name": "Toplam Satışlar",
+            "expression": "SUM('Satışlar'[Tutar] ) ",
+            "formatString": "#,0",
+            "lineageTag": "d2016de4-677f-47d5-a473-c219950b3a8a"
+          },
+          {
+            "name": "Toplam Satışlar_SUMX",
+            "expression": "SUMX('Satışlar', 'Satışlar'[Miktar] * 'Satışlar'[Fiyat] )",
+            "formatString": "#,0",
+            "lineageTag": "f9d71d5a-175d-4a50-b69d-2fec905a57d0"
+          },
+          {
+            "name": "Satış Sayısı",
+            "expression": "COUNTROWS('Satışlar')*2",
+            "formatString": "#,0",
+            "lineageTag": "33bb3bc5-cbf9-4fd3-b1ed-95aa4616fb9f"
+          },
+          {
+            "name": "Toplam İndirim Tutarı",
+            "expression": [
+              "",
+              "SUMX('Satışlar', 'Satışlar'[Birim İndirim]*'Satışlar'[Miktar])"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "60808fa8-cdc6-4a59-abfd-5e35369fb408"
+          },
+          {
+            "name": "Ürünler ID",
+            "expression": "DISTINCTCOUNT('Ürünler'[Ürün ID] )",
+            "formatString": "0",
+            "lineageTag": "74d9f3f5-cf81-438f-9449-47bf2533a567"
+          },
+          {
+            "name": "Satışlar ID",
+            "expression": "DISTINCTCOUNT('Satışlar'[Ürün ID] )*2",
+            "formatString": "#,0",
+            "lineageTag": "1a38b235-5000-42b0-9dfc-86fc0bea957b"
+          },
+          {
+            "name": "CALCULATE ID",
+            "expression": "CALCULATE(DISTINCTCOUNT('Ürünler'[Ürün ID] ) , 'Satışlar' )",
+            "formatString": "0",
+            "lineageTag": "fde25e7f-b3e9-40e5-807e-f5395daba3e5"
+          },
+          {
+            "name": "Toplam Satışlar Kırmızı",
+            "expression": [
+              "",
+              "CALCULATE( [Toplam Satışlar] , 'Ürünler'[Renk] = \"Kırmızı\")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "c7bd9e7b-1ebc-4d01-966f-d489fb2633cb"
+          },
+          {
+            "name": "Satışlar ALL",
+            "expression": [
+              "",
+              "CALCULATE([Toplam Satışlar] , ALL('Satışlar' ) )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "a7ab02fe-6ee2-4203-8836-480c12164e0d"
+          },
+          {
+            "name": "Satışlar ALLSELECTED",
+            "expression": [
+              "",
+              "CALCULATE([Toplam Satışlar] , ALLSELECTED() )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "5c2892b0-0bb9-41ca-8d1e-a9d46c8ced2a"
+          },
+          {
+            "name": "% Rasyo",
+            "expression": "DIVIDE([Toplam Satışlar] , [Satışlar ALLSELECTED] )",
+            "formatString": "#,0%;-#,0%;#,0%",
+            "lineageTag": "8d69278a-5492-4783-898e-e56414e36341"
+          },
+          {
+            "name": "?",
+            "expression": [
+              "",
+              "CALCULATE ([Toplam Satışlar],",
+              "    FILTER ( ALL ( Tarih[Tarih] ), ",
+              "               Tarih[Tarih] <= MAX ( Tarih[Tarih] ) ",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "03f89f29-f5e3-4506-895e-e230d5e911b2"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Ölçüler-c3ac5893-e637-4684-a0e0-a69225a348de",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

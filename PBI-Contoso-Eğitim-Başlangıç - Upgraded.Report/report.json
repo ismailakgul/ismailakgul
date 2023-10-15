@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.37\",\"themeCollection\":{},\"activeSectionIndex\":0,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"allowDataPointLassoSelect\":true},\"objects\":{\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "ReportSection36183aff78dd1791dbbc",
+      "config": "{}",
+      "name": "Pod"
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection36183aff78dd1791dbbc",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"b84493d8e2b2f3b0d937\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1130,\"y\":83.28328328328328,\"width\":150,\"height\":589.3893893893894,\"z\":1000,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Ürün Kategorileri.Kategori\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"ü\",\"Entity\":\"Ürün Kategorileri\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ü\"}},\"Property\":\"Kategori\"},\"Name\":\"Ürün Kategorileri.Kategori\"}]},\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"ü\",\"Entity\":\"Ürün Kategorileri\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ü\"}},\"Property\":\"Kategori\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Cep Telefonları'\"}}],[{\"Literal\":{\"Value\":\"'Ev Aletleri'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 589.39,
+          "width": 150.00,
+          "x": 1130.00,
+          "y": 83.28,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"c4f2f243500da7e8c8f3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":21.78178178178178,\"y\":83.28328328328328,\"z\":0,\"width\":1113.4334334334333,\"height\":589.3893893893894,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Ölçüler.Toplam Satışlar\"},{\"queryRef\":\"Ölçüler.Satışlar ALL\"},{\"queryRef\":\"Ölçüler.Satışlar ALLSELECTED\"},{\"queryRef\":\"Ölçüler.% Rasyo\"}],\"Rows\":[{\"queryRef\":\"Ürünler.Renk\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"ö\",\"Entity\":\"Ölçüler\",\"Type\":0},{\"Name\":\"ü\",\"Entity\":\"Ürünler\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ö\"}},\"Property\":\"Toplam Satışlar\"},\"Name\":\"Ölçüler.Toplam Satışlar\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ü\"}},\"Property\":\"Renk\"},\"Name\":\"Ürünler.Renk\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ö\"}},\"Property\":\"Satışlar ALL\"},\"Name\":\"Ölçüler.Satışlar ALL\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ö\"}},\"Property\":\"Satışlar ALLSELECTED\"},\"Name\":\"Ölçüler.Satışlar ALLSELECTED\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"ö\"}},\"Property\":\"% Rasyo\"},\"Name\":\"Ölçüler.% Rasyo\"}]},\"objects\":{\"grid\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"24D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 589.39,
+          "width": 1113.43,
+          "x": 21.78,
+          "y": 83.28,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
